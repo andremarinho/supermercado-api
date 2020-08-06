@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.supermercado.domain.Cliente;
-import com.supermercado.service.ClienteService;
+import com.supermercado.service.impl.ClienteService;
 
 @RestController
 @RequestMapping(value = "/clientes")
