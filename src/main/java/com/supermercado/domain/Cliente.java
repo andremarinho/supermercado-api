@@ -4,19 +4,19 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import org.springframework.validation.annotation.Validated;
 
 
-@AllArgsConstructor
-@Getter
-@Setter
+import com.supermercado.enums.SexoEnum;
+import com.supermercado.enums.SituacaoEnum;
+
+
+@Validated
 @Document
 public  class Cliente implements Serializable {
 
@@ -28,12 +28,14 @@ public  class Cliente implements Serializable {
 	
 	@Id
 	private Long codigo;
+	@NotNull
 	private String nome;
+	@NotNull
 	private String cpf;
 	private LocalDate dataNascimento;
 	private List<Telefone> telefones;
-	
-	
+	private SituacaoEnum situacao;
+	private SexoEnum sexo;
 	public Long getCodigo() {
 		return codigo;
 	}
@@ -64,9 +66,27 @@ public  class Cliente implements Serializable {
 	public void setTelefones(List<Telefone> telefones) {
 		this.telefones = telefones;
 	}
+	public SituacaoEnum getSituacao() {
+		return situacao;
+	}
+	public void setSituacao(SituacaoEnum situacao) {
+		this.situacao = situacao;
+	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	public static String getSequenceName() {
+		return SEQUENCE_NAME;
+	}
+	public SexoEnum getSexo() {
+		return sexo;
+	}
+	public void setSexo(SexoEnum sexo) {
+		this.sexo = sexo;
+	}
+	
+	
+	
 	
 	
 	
